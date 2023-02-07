@@ -23,7 +23,7 @@ type ProductBox struct {
 }
 
 type Order struct {
-	product       Product
-	orderProduct  OrderProduct
+	Product
+	OrderProduct
 	additionalBox string
 }

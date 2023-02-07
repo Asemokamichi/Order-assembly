@@ -38,8 +38,8 @@ func main() {
 	for key, value := range box {
 		fmt.Printf("\n\n===Стеллаж %v", key)
 		for _, w := range value {
-			fmt.Printf("\n\n%v (id=%v)", w.product.productName, w.product.productID)
-			fmt.Printf("\nзаказ %v, %v шт", w.orderProduct.orderID, w.orderProduct.quantity)
+			fmt.Printf("\n\n%v (id=%v)", w.productName, w.Product.productID)
+			fmt.Printf("\nзаказ %v, %v шт", w.orderID, w.quantity)
 			if len(w.additionalBox) != 0 {
 				fmt.Printf("\nдоп стеллаж: %v", w.additionalBox)
 			}

@@ -54,23 +54,23 @@ func (db *Store) receivingOrders(orders []int) (map[string][]Order, error) {
 
 		for rows.Next() {
 			var order Order
-			order.orderProduct.orderID = w
+			order.orderID = w
 
 			if err := rows.Scan(
-				&order.product.productID,
-				&order.product.productName,
-				&order.orderProduct.quantity,
+				&order.Product.productID,
+				&order.productName,
+				&order.quantity,
 			); err != nil {
 				log.Fatal(err)
 			}
 
 			var orderBox string
 
-			if err := db.DB.QueryRow(queryBox, order.product.productID).Scan(&orderBox); err != nil {
+			if err := db.DB.QueryRow(queryBox, order.Product.productID).Scan(&orderBox); err != nil {
 				log.Fatal(err)
 			}
 
-			additionalBox, err := db.DB.Query(queryadditionalBox, order.product.productID)
+			additionalBox, err := db.DB.Query(queryadditionalBox, order.Product.productID)
 			if err != nil {
 				if err == sql.ErrNoRows {
 					box[orderBox] = append(box[orderBox], order)
